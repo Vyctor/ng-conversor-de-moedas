@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "conversor-de-moedas"
+  "defaultProject": "conversor-de-moedas",
+  "cli": {
+    "analytics": "424bd377-171b-4b77-a931-e7634d412e8d"
+  }
 }
