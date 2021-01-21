@@ -26,4 +26,7 @@
         (click)="converter()" [disabled]="!conversaoForm.form.valid">
     </form>
   </div>
+  <app-modal-cotacao [id]="'modalCotacao'" [conversaoResponse]="conversaoResponse" [conversao]="conversao"
+    (confirm)="init()">
+  </app-modal-cotacao>
 </div>

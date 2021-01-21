@@ -11,31 +11,25 @@ export class ConversorService {
   private readonly BASE_URL =
     'http://data.fixer.io/api/latest?access_key=b15aac12d84e0972ea030ff1712903cb';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   public converter(conversao: Conversao): Observable<any> {
     const params = `&base=${conversao.moedaDe}&symbols=${conversao.moedaPara}`;
     return this.http.get(this.BASE_URL + params);
   }
 
-  public cotacaoPara(
-    conversaoResponse: ConversaoResponse,
-    conversao: Conversao
-  ): number {
+  public cotacaoPara(conversaoResponse: ConversaoResponse, conversao: Conversao): number {
     if (conversaoResponse === undefined) {
       return 0;
     }
-    return conversaoResponse.rates[conversao.moedaPara];
+    return conversao.moedaPara ? conversaoResponse.rates[conversao.moedaPara] : 0;
   }
 
-  public cotacaoDe(
-    conversaoResponse: ConversaoResponse,
-    conversao: Conversao
-  ): string {
+  public cotacaoDe(conversaoResponse: ConversaoResponse, conversao: Conversao): string {
     if (conversaoResponse === undefined) {
       return '0';
     }
-    return (1 / conversaoResponse.rates[conversao.moedaPara]).toFixed(4);
+    return conversao.moedaPara ? (1 / conversaoResponse.rates[conversao.moedaPara]).toFixed(4) : '0';
   }
 
   public dataCotacao(conversaoResponse: ConversaoResponse): string {
