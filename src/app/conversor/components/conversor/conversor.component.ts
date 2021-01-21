@@ -27,13 +27,18 @@ export class ConversorComponent implements OnInit {
   }
 
   public init(): void {
-    this.conversao = new Conversao('USD', 'BRL', 0);
+    this.conversao = new Conversao('EUR', 'BRL', 0);
     this.possuiErro = false;
   }
 
   public converter(): void {
     if (this.conversaoForm.valid) {
-      alert('Convertendo: ' + JSON.stringify(this.conversao));
+      this.conversorService.converter(this.conversao)
+        .subscribe(response => {
+          this.conversaoResponse = response;
+          console.log(response);
+        }
+          , (error) => this.possuiErro = true);
     }
   }
 
