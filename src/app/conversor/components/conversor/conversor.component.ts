@@ -27,7 +27,9 @@ export class ConversorComponent implements OnInit {
   }
 
   public init(): void {
-    this.conversao = new Conversao('EUR', 'BRL', 0);
+    this.conversao = new Conversao('EUR', 'BRL', null);
+
+
     this.possuiErro = false;
   }
 
