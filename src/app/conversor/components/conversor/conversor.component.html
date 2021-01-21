@@ -10,7 +10,7 @@
   <div class="panel-body text-center">
     <form #conversaoForm="ngForm" class="form-inline">
       <input type="text" name="valor" class="form-control text-right" placeholder="0" [(ngModel)]="conversao.valor"
-        required>
+        appNumero required>
       <select name="moedaDe" class="form-control" [(ngModel)]="conversao.moedaDe" required>
         <option *ngFor="let moeda of moedas" [value]="moeda.sigla">
           {{moeda.sigla}} - {{moeda.descricao}}
